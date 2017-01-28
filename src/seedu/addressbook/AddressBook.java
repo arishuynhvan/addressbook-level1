@@ -135,12 +135,12 @@ public class AddressBook {
 
     private static final String DIVIDER = "===================================================";
 
-
     /* We use a String array to store details of a single person.
      * The constants given below are the indexes for the different data elements of a person
      * used by the internal String[] storage format.
      * For example, a person's name is stored as the 0th element in the array.
      */
+
     private static final int PERSON_DATA_INDEX_NAME = 0;
     private static final int PERSON_DATA_INDEX_PHONE = 1;
     private static final int PERSON_DATA_INDEX_EMAIL = 2;
@@ -154,7 +154,15 @@ public class AddressBook {
      * Offset required to convert between 1-indexing and 0-indexing.COMMAND_
      */
     private static final int DISPLAYED_INDEX_OFFSET = 1;
+    
+    /**
+     * Length of command line arguments for processing program
+     */
 
+    private static final int LENGTH_INVALID_PROGRAM =2;
+    private static final int LENGTH_GIVEN_FILE =1;
+    private static final int LENGTH_DEFAULT_FILE =0;
+    
     /**
      * If the first non-whitespace character in a user's input line is this, that line will be ignored.
      */
@@ -260,17 +268,18 @@ public class AddressBook {
      *
      * @param args full program arguments passed to application main method
      */
+    
     private static void processProgramArgs(String[] args) {
-        if (args.length >= 2) {
+        if (args.length >= LENGTH_INVALID_PROGRAM) {
             showToUser(MESSAGE_INVALID_PROGRAM_ARGS);
             exitProgram();
         }
 
-        if (args.length == 1) {
+        if (args.length == LENGTH_GIVEN_FILE) {
             setupGivenFileForStorage(args[0]);
         }
 
-        if(args.length == 0) {
+        if(args.length == LENGTH_DEFAULT_FILE) {
             setupDefaultFileForStorage();
         }
     }
