@@ -546,7 +546,7 @@ public class AddressBook {
      * @param rawArgs raw command args string for the delete person command
      * @return extracted index
      */
-    private static int extractTargetIndexFromDeletePersonArgs(String rawArgs) {
+    private static int getDeletePersonArgsIndex(String rawArgs) {
         return Integer.parseInt(rawArgs.trim());
     }
 
